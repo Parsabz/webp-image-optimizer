@@ -1,0 +1,45 @@
+{
+  "name": "image-optimizer",
+  "version": "1.0.0",
+  "description": "A command-line tool that processes project images for web deployment by converting them to WebP format with intelligent compression",
+  "main": "dist/index.js",
+  "bin": {
+    "image-optimizer": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "clean": "rm -rf dist",
+    "prepare": "npm run build",
+    "optimize": "npm run build && node dist/index.js",
+    "optimize:dev": "ts-node src/index.ts",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "test:integration": "vitest --run tests/integration",
+    "test:sample": "npm run build && node dist/index.js ./test-images ./optimized-output --verbose",
+    "help": "npm run build && node dist/index.js --help"
+  },
+  "keywords": [
+    "image",
+    "optimization",
+    "webp",
+    "compression",
+    "cli"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "sharp": "^0.32.6",
+    "commander": "^11.1.0",
+    "fs-extra": "^11.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.0",
+    "@types/fs-extra": "^11.0.4",
+    "typescript": "^5.2.2",
+    "ts-node": "^10.9.1",
+    "vitest": "^0.34.6",
+    "@types/sharp": "^0.32.0"
+  }
+}
